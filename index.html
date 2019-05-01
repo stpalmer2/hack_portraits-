@@ -42,7 +42,7 @@ uniform float opacity;
 uniform vec3 tint;
 void main() 
 {
-	vec2 p = vec2( vRefract.x * distance + 0.5, vRefract.y * distance + 0.5 );
+	vec2 p = vec2( vRefract.x * distance + 0.4, vRefract.y * distance + 0.4 );
 	p = vec2(1.0, 1.0) - p;
 	vec3 color = texture2D( texture, p ).rgb;
 	gl_FragColor = vec4( color, opacity ) * vec4( tint, 1.0 );
@@ -153,7 +153,7 @@ function initialize()
 	let refractMaterial = new THREE.ShaderMaterial({
 		uniforms: {
 			texture: { value: videoTexture },
-			refractionRatio: { value: 100 },
+			refractionRatio: { value: 0.75 },
 			distance: { value: 1.0 },
 			opacity: { value: 0.8 },
 			tint: { value: new THREE.Vector3(0.8, 0.8, 1.0) }
@@ -168,7 +168,7 @@ function initialize()
 		refractMaterial 
 	);
 	
-	reflectMesh.position.y = 4;
+	reflectMesh.position.y = 1;
 
 	// reflectMesh.rotation(0, 90, 0);
 
